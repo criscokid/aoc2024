@@ -4,9 +4,9 @@ right = []
 
 with open("input1.txt") as f:
     for line in f:
-        parts = line.strip("\n").split()
-        left.append(int(parts[0]))
-        right.append(int(parts[1]))
+        parts = [int(x) for x in line.strip("\n").split()]
+        left.append(parts[0])
+        right.append(parts[1])
 
 left.sort()
 right.sort()
