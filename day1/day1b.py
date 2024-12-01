@@ -4,7 +4,7 @@ right = []
 
 with open("input1.txt") as f:
     for line in f:
-        parts = re.split(r'\s+', line.strip("\n"))
+        parts = line.strip("\n").split()
         left.append(int(parts[0]))
         right.append(int(parts[1]))
 
