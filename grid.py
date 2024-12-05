@@ -56,48 +56,48 @@ class TextGrid:
         values = {}
         #left
         left = []
-        for i in range(1, count):
+        for i in range(0, count):
             if start_x - i >= 0:
                 left.append(self.data[start_y][start_x - i])
         values['left'] = left
         #right 
         right = []
-        for i in range(1, count):
+        for i in range(0, count):
             if start_x + i < len(self.data[start_y]):
                 right.append(self.data[start_y][start_x + i])
         values['right'] = right
         #down
         down = []
-        for i in range(1, count):
+        for i in range(0, count):
             if start_y + i < len(self.data):
                 down.append(self.data[start_y + i][start_x])
         values['down'] = down
         up = []
-        for i in range(1, count):
+        for i in range(0, count):
             if start_y - i >= 0:
                 up.append(self.data[start_y-i][start_x])
         values['up'] = up
 
         up_left = []
-        for i in range(1, count):
+        for i in range(0, count):
             if start_y - i >=0 and start_x - i >= 0:
                 up_left.append(self.data[start_y - i][start_x - i])
         values['up_left'] = up_left
 
         up_right = []
-        for i in range(1, count):
+        for i in range(0, count):
             if start_y - i >=0 and start_x + i < len(self.data[start_y]):
                 up_right.append(self.data[start_y - i][start_x + i])
         values['up_right'] = up_right
 
         down_left = []
-        for i in range(1, count):
+        for i in range(0, count):
             if start_y + i  < len(self.data) and start_x - i >= 0:
                 down_left.append(self.data[start_y + i][start_x - i])
         values['down_left'] = down_left
 
         down_right = []
-        for i in range(1, count):
+        for i in range(0, count):
             if start_y + i < len(self.data) and start_x + i < len(self.data[start_y]):
                 down_right.append(self.data[start_y + i][start_x + i])
         values['down_right'] = down_right

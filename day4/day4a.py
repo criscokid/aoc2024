@@ -14,9 +14,9 @@ g.print()
 
 while g.scan_until('X'):
     surrounding = g.take_count_around(4)
-    strings = [''.join(x) for x in surrounding.values() if len(x) == 3]
+    strings = [''.join(x) for x in surrounding.values() if len(x) == 4]
     for s in strings:
-        if s == "MAS":
+        if s == "XMAS":
             total_xmas += 1
 
 

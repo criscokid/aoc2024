@@ -19,8 +19,8 @@ while g.scan_until('A'):
     down_left = ''.join(s['down_left'])
     down_right = ''.join(s['down_right'])
 
-    if (up_left == 'S' and down_right == 'M') or (up_left == 'M' and down_right == 'S'):
-        if (up_right == 'M' and down_left == 'S') or (up_right == 'S' and down_left == 'M'):
+    if (up_left == 'AS' and down_right == 'AM') or (up_left == 'AM' and down_right == 'AS'):
+        if (up_right == 'AM' and down_left == 'AS') or (up_right == 'AS' and down_left == 'AM'):
             total_xmas += 1
 
 print(total_xmas)
