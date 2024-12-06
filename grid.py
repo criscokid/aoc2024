@@ -3,11 +3,13 @@ class TextGrid:
         self.data = []
         self.current_x = 0
         self.current_y = 0
+        self.facing = None
 
     def add_row(self, row):
         self.data.append(row)
 
     def print(self):
+        print()
         for y in range(len(self.data)):
             print(self.data[y])
 
@@ -19,6 +21,9 @@ class TextGrid:
 
     def col_count(self):
         return len(self.data[0])
+
+    def current_data(self):
+        return self.data
 
     def cols(self):
         cols_count = len(self.data[0])
@@ -34,8 +39,18 @@ class TextGrid:
     def value_at(self, x, y):
         return self.data[y][x]
 
+    def set_value_at(self, x, y, val):
+        self.data[y][x] = val
+
+    def set_value_at_current_pos(self, val):
+        self.data[self.current_y][self.current_x] = val 
+
     def current_pos(self):
         return (self.current_x, self.current_y)
+
+    def move_to_pos(self, x, y):
+        self.current_x = x
+        self.current_y = y
 
     def scan_until(self, val):
         while True:
@@ -103,6 +118,58 @@ class TextGrid:
         values['down_right'] = down_right
         return values
 
-        
+    def set_facing(self, dir):
+        self.facing = dir
 
-            
+    def facing_dir(self):
+        return self.facing
+
+    def next_facing_val(self):
+        if self.facing == 'up':
+            if self.current_y - 1 < 0:
+                return None
+            else:
+                return self.data[self.current_y - 1][self.current_x]
+        if self.facing == 'down':
+            if self.current_y + 1 >= len(self.data):
+                return None
+            else:
+                return self.data[self.current_y + 1][self.current_x]
+        if self.facing == 'left':
+            if self.current_x - 1 < 0:
+                return None
+            else:
+                return self.data[self.current_y][self.current_x - 1]
+        if self.facing == 'right':
+            if self.current_x + 1 >= len(self.data[self.current_y]):
+                return None
+            else:
+                return self.data[self.current_y][self.current_x + 1]
+
+    def move_facing(self):
+        if self.facing == 'up':
+            if self.current_y - 1 >= 0:
+                self.current_y = self.current_y - 1
+        if self.facing == 'down':
+            if self.current_y + 1 < len(self.data):
+                self.current_y = self.current_y + 1
+        if self.facing == 'left':
+            if self.current_x - 1 >= 0:
+                self.current_x = self.current_x - 1
+        if self.facing == 'right':
+            if self.current_x + 1 < len(self.data[self.current_y]):
+                self.current_x = self.current_x + 1
+
+    def facing_would_move_to(self):
+        if self.facing == 'up':
+            if self.current_y - 1 >= 0:
+                return (self.current_x, self.current_y - 1)
+        if self.facing == 'down':
+            if self.current_y + 1 < len(self.data):
+                return (self.current_x, self.current_y + 1)
+        if self.facing == 'left':
+            if self.current_x - 1 >= 0:
+                return (self.current_x - 1, self.current_y)
+        if self.facing == 'right':
+            if self.current_x + 1 < len(self.data[self.current_y]):
+                return (self.current_x + 1, self.current_y)
