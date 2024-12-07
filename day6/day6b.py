@@ -10,7 +10,6 @@ with open(sys.argv[1]) as f:
         g.add_row(list(line.strip()))
 
 
-g.print()
 
 g.scan_until('^')
 g.set_facing('up')
