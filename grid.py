@@ -48,6 +48,9 @@ class TextGrid:
     def current_pos(self):
         return (self.current_x, self.current_y)
 
+    def value_at_current_pos(self):
+        return self.data[self.current_y][self.current_x]
+
     def move_to_pos(self, x, y):
         self.current_x = x
         self.current_y = y
@@ -65,6 +68,16 @@ class TextGrid:
 
             if self.data[self.current_y][self.current_x] == val:
                 return True
+
+    def scan(self):
+        self.current_x += 1
+        if self.current_x >= len(self.data[self.current_y]):
+            self.current_y += 1
+            self.current_x = 0
+        if self.current_y >= len(self.data):
+                return False
+        return True
+
 
     def take_count_around(self, count):
         start_x, start_y = self.current_pos()
