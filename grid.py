@@ -1,8 +1,8 @@
 class TextGrid:
     def __init__(self):
         self.data = []
-        self.current_x = 0
-        self.current_y = 0
+        self.current_x = -1
+        self.current_y = -1
         self.facing = None
 
     def add_row(self, row):
@@ -37,6 +37,8 @@ class TextGrid:
         return cols
 
     def value_at(self, x, y):
+        if y < 0 or y >= len(self.data) or x < 0 or x >= len(self.data[y]):
+            return None
         return self.data[y][x]
 
     def set_value_at(self, x, y, val):
@@ -57,7 +59,6 @@ class TextGrid:
 
     def scan_until(self, val):
         while True:
-
             self.current_x += 1
             if self.current_x >= len(self.data[self.current_y]):
                 self.current_y += 1
@@ -79,7 +80,7 @@ class TextGrid:
         return True
 
 
-    def take_count_around(self, count):
+    def take_count_around(self, count, diagonals = True):
         start_x, start_y = self.current_pos()
         values = {}
         #left
@@ -105,6 +106,9 @@ class TextGrid:
             if start_y - i >= 0:
                 up.append(self.data[start_y-i][start_x])
         values['up'] = up
+
+        if not diagonals:
+            return values
 
         up_left = []
         for i in range(0, count):
