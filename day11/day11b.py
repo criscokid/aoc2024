@@ -27,12 +27,6 @@ def process(val, iteration = 25):
     else:
         return process(val * 2024, iteration - 1)
 
-# for i in range(25):
-#     post_values = []
-#     for v in values:
-#         ret = process(v)
-#         post_values.extend(ret)
-#     values = post_values
 total = 0
 for v in values:
     total += process(v, 75)
