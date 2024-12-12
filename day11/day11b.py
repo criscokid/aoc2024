@@ -1,7 +1,9 @@
 import sys
 import math
 import functools
+
 values = []
+
 with open(sys.argv[1]) as f:
         values = [int(x) for x in f.read().strip("\n").split()]
 

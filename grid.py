@@ -2,7 +2,7 @@ class TextGrid:
     def __init__(self):
         self.data = []
         self.current_x = -1
-        self.current_y = -1
+        self.current_y = 0
         self.facing = None
 
     def add_row(self, row):
