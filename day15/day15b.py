@@ -77,7 +77,7 @@ def can_box_move_in_dir(pos, dir):
         new_right_x_pos = pos_x + dir_x - 1
     if g.value_at(new_left_x_pos, new_y_pos) == '.' and g.value_at(new_right_x_pos, new_y_pos) == '.':
         return True
-    if g.value_at(new_left_x_pos, new_y_pos) == '#' and g.value_at(new_right_x_pos, new_y_pos) == '#':
+    if g.value_at(new_left_x_pos, new_y_pos) == '#' or g.value_at(new_right_x_pos, new_y_pos) == '#':
         return False
     left_check = None
     right_check = None
@@ -177,9 +177,9 @@ for p in path:
     (success, moved_box) = move_in_dir(current_pos, p)
     if success:
         current_pos = tuple(map(operator.add, current_pos, p))
-    g.print()
-    if moved_box:
-        input()
+    # g.print()
+    # if moved_box:
+    #     input()
 
 g.move_to_pos(-1, 0)
 
