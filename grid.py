@@ -11,7 +11,7 @@ class TextGrid:
     def print(self):
         print()
         for y in range(len(self.data)):
-            print(self.data[y])
+            print(''.join(self.data[y]))
 
     def rows(self):
         return self.data
